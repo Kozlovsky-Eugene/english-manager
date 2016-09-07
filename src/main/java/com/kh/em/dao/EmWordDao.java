@@ -1,16 +1,11 @@
 package com.kh.em.dao;
 
 import com.kh.em.entity.Word;
-import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.Assert;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,6 +14,7 @@ public class EmWordDao implements WordDao {
 
     private static final String SELECT_BY_VALUE = "select * from Word where id=:id";
 
+    @Autowired
     private NamedParameterJdbcTemplate jdbcTemplate;
 
     @Override
