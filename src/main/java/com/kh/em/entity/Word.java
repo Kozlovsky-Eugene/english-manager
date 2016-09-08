@@ -4,9 +4,18 @@ import java.util.List;
 
 public class Word {
 
+    private Long id;
     private String value;
     private String language;
     private List<Word> translation;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getValue() {
         return value;
