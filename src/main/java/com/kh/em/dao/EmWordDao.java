@@ -2,10 +2,13 @@ package com.kh.em.dao;
 
 import com.kh.em.entity.Word;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.Assert;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,11 +30,14 @@ public class EmWordDao implements WordDao {
     public Word get(Integer id) {
         Map<String, Object> params = new HashMap<>();
         params.put("id", id);
-        return jdbcTemplate.queryForObject(SELECT_BY_VALUE, params, (resultSet, i) -> {
-            Word word = new Word();
-            word.setValue(resultSet.getString("value"));
-            word.setLanguage(String.valueOf(resultSet.getInt("language")));
-            return word;
+        return jdbcTemplate.queryForObject(SELECT_BY_VALUE, params, new RowMapper<Word>() {
+            @Override
+            public Word mapRow(ResultSet resultSet, int i) throws SQLException {
+                Word word = new Word();
+                word.setValue(resultSet.getString("value"));
+                word.setLanguage(String.valueOf(resultSet.getInt("language")));
+                return word;
+            }
         });
     }
 

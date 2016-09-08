@@ -14,7 +14,7 @@
         <jspapi.version>2.1</jspapi.version>
         <junit.version>4.11</junit.version>
         <tomcat.plugin.version>2.2</tomcat.plugin.version>
-        <postgresql.version>9.1-901-1.jdbc4</postgresql.version>
+        <postgresql.version>9.3-1100-jdbc41</postgresql.version>
         <log4j.version>1.2.17</log4j.version>
     </properties>
 
@@ -73,9 +73,9 @@
         </dependency>
 
         <dependency>
-            <groupId>postgresql</groupId>
+            <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>${postgresql.version}</version>
+            <version>9.4.1210</version>
         </dependency>
 
         <dependency>
